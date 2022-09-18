@@ -16,13 +16,7 @@ namespace Mag1.Models
 
         public SqlDBHandler()
         {
-            _connectionString = @"Data Source=DESKTOP-87LKHDF\SQLEXPRESS;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-        }
-
-        public void ConnectToDataBase()
-        {
-            SqlConnection sqlConnection = new SqlConnection(_connectionString);
-            sqlConnection.Open();
+            _connectionString = @"Data Source=192.168.8.124,1433; Initial Catalog=firma_dem; User Id=sa; Password=sa";
         }
 
         public List<string> ExecuteQuery(string query)

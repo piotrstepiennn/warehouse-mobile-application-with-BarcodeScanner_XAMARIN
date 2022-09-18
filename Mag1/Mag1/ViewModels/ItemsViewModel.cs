@@ -70,25 +70,6 @@ namespace Mag1.ViewModels
                     }
                 }
 
-                Console.WriteLine("tutaj");
-                //Models.SqlDBHandler sqlDBHandler1 = new Models.SqlDBHandler("firma_dem", "localhost", "root", "root");
-                //var ksiega = sqlDBHandler1.ExecuteQuery("select suma_bru, wart_kup, typ_dok from nagl_dok");
-                //foreach (var entity in ksiega)
-                //{
-
-                    
-
-                //    var item = entity.Split('*');
-                //    Ksiega_Rachunkowa ks = new Ksiega_Rachunkowa
-                //    {
-                //        Wartosc_Sprzedazy = item[0],
-                //        Wartosc_Zakupu = item[1],
-                //        asdasd = item[2]
-                //    };
-
-                //    ksiega_rachunkowa.Add(ks);
-                    
-                //}
             }
 
             catch (Exception ex)

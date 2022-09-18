@@ -6,9 +6,9 @@ using Xamarin.Forms.Xaml;
 namespace Mag1.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AboutPage : ContentPage
+    public partial class AddItemPage : ContentPage
     {
-        public AboutPage()
+        public AddItemPage()
         {
             InitializeComponent();
         }

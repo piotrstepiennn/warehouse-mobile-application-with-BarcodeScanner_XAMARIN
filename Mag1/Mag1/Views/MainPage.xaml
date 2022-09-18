@@ -15,14 +15,14 @@
             </x:Arguments>
         </NavigationPage>
         
-        <NavigationPage Title="AddItem">
+        <NavigationPage Title="Dodaj Produkt">
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
                     <On Platform="iOS" Value="tab_about.png"/>
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
-                <views:AboutPage />
+                <views:AddItemPage />
             </x:Arguments>
         </NavigationPage>
     </TabbedPage.Children>
