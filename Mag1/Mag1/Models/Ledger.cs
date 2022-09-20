@@ -6,7 +6,13 @@ namespace Mag1.Models
 {
     public class Ledger
     {
-        public string Purchase_Value { get; set; }
-        public string Sale_Value { get; set; }
+        public float Purchase_Value { get; set; }
+        public float Sale_Value { get; set; }
+
+        public Ledger(float purchaseValue, float saleValue)
+        {
+            Purchase_Value = purchaseValue;
+            Sale_Value = saleValue;
+        }
     }
 }

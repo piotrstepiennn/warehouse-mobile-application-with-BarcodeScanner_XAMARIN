@@ -4,15 +4,7 @@
              x:Class="Mag1.Views.ItemsPage"
               Title="{Binding Title}"
              x:Name="BrowseItemsPage">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="" Clicked="AddItem_Clicked">
-            <ToolbarItem.Icon>
-                <OnPlatform x:TypeArguments="FileImageSource">
-                    <On Platform="UWP" Value="add.png"/>
-                </OnPlatform>
-            </ToolbarItem.Icon>
-        </ToolbarItem>
-    </ContentPage.ToolbarItems>
+
     <ContentPage.Content>
         <StackLayout>
             <Button x:Name="KsiegaButton" Text="Ksiega przychodow i rozchodow" Clicked="KsiegaButton_Clicked" />

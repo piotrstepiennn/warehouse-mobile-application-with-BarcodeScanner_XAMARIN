@@ -9,6 +9,8 @@
             <Label x:Name="Przychody_label"/>
             <Label Text="Wydatki:"/>
             <Label x:Name="Wydatki_label"/>
+            <Label Text="Bilans:"/>
+            <Label x:Name="Bilans_label"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Data.SqlClient;
 using Xamarin.Essentials;
+using ZXing;
 
 namespace Mag1.Models
 {
@@ -19,10 +20,9 @@ namespace Mag1.Models
             _connectionString = @"Data Source=192.168.8.124,1433; Initial Catalog=firma_dem; User Id=sa; Password=sa";
         }
 
-        public List<string> ExecuteQuery(string query)
+        public List<string> GetAllItems(string query)
         {
-            string con_string= _connectionString;
-            SqlConnection sqlConnection = new SqlConnection(con_string);
+            SqlConnection sqlConnection = new SqlConnection(_connectionString);
             SqlCommand command = new SqlCommand(query, sqlConnection);
             string queryResult = "";
             List<string> results  = new List<string>(); 
@@ -34,7 +34,7 @@ namespace Mag1.Models
                 {
                     while (reader.Read())
                     {
-                        queryResult = String.Format( "{0}*{1}*{2}", reader[0], reader[1], reader[2]);
+                        queryResult = String.Format( "{0}*{1}*{2}*{3}*{4}", reader[0], reader[1], reader[2], reader[3], reader[4]);
                         if (queryResult != null)
                         {
                             results.Add(queryResult);
@@ -47,9 +47,31 @@ namespace Mag1.Models
                 Console.WriteLine("Błąd połączenia z bazą: ");
                 Console.WriteLine(ex);
             }
+
             sqlConnection.Close();
             return results;
             
+        }
+
+        public bool CreateItem(string query)
+        {
+            SqlConnection sqlConnection = new SqlConnection(_connectionString);
+            
+            try
+            {
+                sqlConnection.Open();
+                SqlCommand command = new SqlCommand(query, sqlConnection);
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Błąd połączenia z bazą: ");
+                Console.WriteLine(ex);
+                sqlConnection.Close();
+                return false;
+            }
+            sqlConnection.Close();
+            return true;
         }
 
     }

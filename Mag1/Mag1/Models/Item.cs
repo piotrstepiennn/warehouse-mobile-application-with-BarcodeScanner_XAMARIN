@@ -8,13 +8,9 @@ namespace Mag1.Models
         public string Name { get; set; }
         public string Pieces { get; set; }
         public string Kod { get; set; }
+        public Ledger Ledger { get; set; }
 
-        public Item(string name, string pieces, string kod)
-        {
-            Name = name;
-            Pieces = pieces;
-            Kod = kod;
-        }
+
         public Item() { }
 
                

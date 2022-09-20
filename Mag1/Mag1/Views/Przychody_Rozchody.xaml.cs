@@ -21,13 +21,13 @@ namespace Mag1.Views
 
         private void ObliczBilans_Button_Clicked(object sender, EventArgs e)
         {
-            var item = ItemsViewModel.ksiega_rachunkowa;
+            var item = ItemsViewModel.produkty;
 
             double koszt = 0;
             foreach (var i in item)
             {
                 
-                koszt += Convert.ToDouble(i.Sale_Value);
+                koszt += Convert.ToDouble(i.Ledger.Sale_Value);
             }
             Przychody_label.Text = koszt.ToString() + " zl";
 
@@ -35,10 +35,13 @@ namespace Mag1.Views
             foreach (var i in item)
             {
                 
-                wydatek += Convert.ToDouble(i.Purchase_Value);
+                wydatek += Convert.ToDouble(i.Ledger.Purchase_Value);
                 Wydatki_label.Text = wydatek.ToString() + " zl";
             }
-            
+
+            double bilans = koszt - wydatek;
+            Bilans_label.Text = bilans.ToString() + " zl";
+
         }
     }
 }

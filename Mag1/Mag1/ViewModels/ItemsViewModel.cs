@@ -16,7 +16,7 @@ namespace Mag1.ViewModels
         public ObservableCollection<Item> Items { get; set; }
         public Command LoadItemsCommand { get; set; }
         public static List<Item> produkty = new List<Item>();
-        public static List<Ledger> ksiega_rachunkowa = new List<Ledger>();
+        Models.SqlDBHandler sqlDBHandler = new Models.SqlDBHandler();
 
         public ItemsViewModel()
         {
@@ -24,12 +24,6 @@ namespace Mag1.ViewModels
             Items = new ObservableCollection<Item>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
-            MessagingCenter.Subscribe<NewItemPage, Item>(this, "Dodaj", async (obj, item) =>
-            {
-                var newItem = item as Item;
-                Items.Add(newItem);
-                await DataStore.AddItemAsync(newItem);
-            });
         }
 
         async Task ExecuteLoadItemsCommand()
@@ -41,9 +35,9 @@ namespace Mag1.ViewModels
 
             try
             {
-                Models.SqlDBHandler sqlDBHandler = new Models.SqlDBHandler();
-                var t = sqlDBHandler.ExecuteQuery("select nazwa_art, kod_kresk, zapas from artykuly");
-                
+                var t = sqlDBHandler.GetAllItems("select nazwa_art, kod_kresk, zapas, koszt_zakupu, wartosc_sprzedazy from artykuly");
+                Items.Clear();
+                produkty.Clear();
 
                 if (t != null)
                 {
@@ -54,16 +48,13 @@ namespace Mag1.ViewModels
                             continue;
                         }
 
-
                         var table = entity.Split('*');
                         Item item = new Item();
-
 
                         item.Name = table[0];
                         item.Kod = table[1];
                         item.Pieces = table[2];
-
-
+                        item.Ledger = new Ledger(float.Parse(table[3]), float.Parse(table[4]));
 
                         Items.Add(item);
                         produkty.Add(item);
@@ -82,12 +73,15 @@ namespace Mag1.ViewModels
             }
 
         }
-
-        public ObservableCollection<Item> GetItems()
+        public bool AddNewItem(string nazwa, string zapas, string kod, string cena_zakupu, string cena_sprzedazy)
         {
-            return Items;
+            var result = sqlDBHandler.CreateItem($"insert into artykuly (nazwa_art, zapas, kod_kresk, wartosc_sprzedazy, koszt_zakupu) values ('{nazwa}',{zapas},{kod},{cena_zakupu}, {cena_sprzedazy})");
+            if(result)
+            return true;
+            return false;
         }
-        
     }
     
+    
+
 }
