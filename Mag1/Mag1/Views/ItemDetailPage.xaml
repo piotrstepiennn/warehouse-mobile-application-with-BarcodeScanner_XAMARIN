@@ -5,10 +5,16 @@
              Title="{Binding Title}">
     <StackLayout Spacing="20" Padding="15">
         <Label Text="Nazwa:" FontSize="Medium" />
-        <Label Text="{Binding Item.Name}" FontSize="Small"/>
+        <Label x:Name="NazwaProduktu_Label" Text="{Binding Item.Name}" FontSize="Small"/>
         <Label Text="Kod kreskowy:" FontSize="Medium" />
-        <Label Text="{Binding Item.Kod}" FontSize="Small"/>
+        <Label x:Name="KodProduktu_Label" Text="{Binding Item.Kod}" FontSize="Small"/>
         <Label Text="Stan magazynowy:" FontSize="Medium" />
-        <Label Text="{Binding Item.Pieces}" FontSize="Small"/>
+        <Label x:Name="ZapasProduktu_Label" Text="{Binding Item.Pieces}" FontSize="Small"/>
+        <Label Text="Wartość zakupu:" FontSize="Medium" />
+        <Label x:Name="CenaZakupy_Label" Text="{Binding Item.Ledger.Purchase_Value}" FontSize="Small"/>
+        <Label Text="Wartość sprzedaży:" FontSize="Medium" />
+        <Label x:Name="CenaSprzedazy_Label" Text="{Binding Item.Ledger.Sale_Value}" FontSize="Small"/>
+        <Button x:Name="EditButton" Text="Edytuj Przedmiot" Clicked="EditButton_Clicked"/>
+        <Button x:Name="DeleteButton" Text="Usuń Przedmiot" Clicked="DeleteButton_Clicked"/>
     </StackLayout>
 </ContentPage>

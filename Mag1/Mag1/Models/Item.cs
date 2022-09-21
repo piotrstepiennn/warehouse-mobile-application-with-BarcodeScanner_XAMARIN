@@ -13,6 +13,13 @@ namespace Mag1.Models
 
         public Item() { }
 
+        public Item(string name, string kod, string pieces, Ledger ledger)
+        {
+            Name = name;
+            Pieces = pieces;
+            Kod = kod;
+            Ledger = ledger;
+        }
                
     }
 }

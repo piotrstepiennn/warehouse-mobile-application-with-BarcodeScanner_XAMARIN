@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mag1.Views.EditItemPage"
+             Title="{Binding Title}">
+    <ScrollView>
+        <StackLayout>
+            <Label Text="Nazwa:" FontSize="Medium" />
+            <Label x:Name="NazwaProduktu_Label" Text="{Binding Item.Name}" FontSize="Small"/>
+            <Entry x:Name="NazwaProduktu_Entry" Placeholder="Nowa Nazwa Produktu"
+            Style="{DynamicResource ListItemTextStyle}" 
+            FontSize="16" />
+            <Label Text="Kod kreskowy:" FontSize="Medium" />
+            <Label x:Name="KodProduktu_Label" Text="{Binding Item.Kod}" FontSize="Small"/>
+            <Entry x:Name="KodProduktu_Entry" Placeholder="Nowy Kod Produktu"
+            Style="{DynamicResource ListItemTextStyle}" 
+            FontSize="16" />
+            <Label Text="Stan magazynowy:" FontSize="Medium" />
+            <Label x:Name="ZapasProduktu_Label" Text="{Binding Item.Pieces}" FontSize="Small"/>
+            <Entry x:Name="ZapasProduktu_Entry" Placeholder="Nowy Stan Magazynowy Produktu"
+            Style="{DynamicResource ListItemTextStyle}" 
+            FontSize="16" />
+            <Label Text="Wartość zakupu:" FontSize="Medium" />
+            <Label x:Name="CenaZakupu_Label" Text="{Binding Item.Ledger.Purchase_Value}" FontSize="Small"/>
+            <Entry x:Name="CenaZakupu_Entry" Placeholder="Nowa Cena Zakupu Produktu"
+            Style="{DynamicResource ListItemTextStyle}" 
+            FontSize="16" />
+            <Label Text="Wartość sprzedaży:" FontSize="Medium" />
+            <Label x:Name="CenaSprzedazy_Label" Text="{Binding Item.Ledger.Sale_Value}" FontSize="Small"/>
+            <Entry x:Name="CenaSprzedazy_Entry" Placeholder="Nowa Cena Sprzedazy"
+            Style="{DynamicResource ListItemTextStyle}" 
+            FontSize="16" />
+            <Button x:Name="SaveEditButton" Text="Zapisz Zmiany" Clicked="SaveEditButton_Clicked"/>
+        </StackLayout>
+    </ScrollView>
+    
+</ContentPage>

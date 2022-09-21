@@ -53,7 +53,7 @@ namespace Mag1.Models
             
         }
 
-        public bool CreateItem(string query)
+        public bool ExecuteQuery(string query)
         {
             SqlConnection sqlConnection = new SqlConnection(_connectionString);
             
