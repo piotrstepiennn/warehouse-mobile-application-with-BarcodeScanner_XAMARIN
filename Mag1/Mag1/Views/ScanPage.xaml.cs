@@ -15,9 +15,6 @@ namespace Mag1.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ScanPage : ContentPage
 	{
-        public static List<Item> produkty = new List<Item>();
-
-
         public ScanPage ()
 		{
 			InitializeComponent ();
@@ -38,7 +35,7 @@ namespace Mag1.Views
 
                     if (i.Kod.Contains(result.Text) || i.Kod.Equals(result.Text.ToString()))
                     {
-                        stanMagazynowyText.Text = "Nazwa produktu: " + i.Name.ToString() + "Stan Magazynowy: " + i.Pieces.ToString(); break;
+                        stanMagazynowyText.Text = "Nazwa produktu: " + i.Name.ToString() + " Stan Magazynowy: " + i.Pieces.ToString(); break;
                     }
                     else stanMagazynowyText.Text = "Brak produktu w bazie";
 

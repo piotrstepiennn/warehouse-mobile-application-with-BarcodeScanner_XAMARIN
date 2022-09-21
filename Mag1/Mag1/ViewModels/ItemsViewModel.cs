@@ -9,12 +9,13 @@ using Mag1.Models;
 using Mag1.Views;
 using System.Collections.Generic;
 using static Xamarin.Essentials.Permissions;
+using System.Linq;
 
 namespace Mag1.ViewModels
 {
     public class ItemsViewModel : BaseViewModel
     {
-        public ObservableCollection<Item> Items { get; set; }
+        public List<Item> Items { get; set; }
         public Command LoadItemsCommand { get; set; }
         public static List<Item> produkty = new List<Item>();
         Models.SqlDBHandler sqlDBHandler = new Models.SqlDBHandler();
@@ -22,7 +23,7 @@ namespace Mag1.ViewModels
         public ItemsViewModel()
         {
             Title = "Magazyn";
-            Items = new ObservableCollection<Item>();
+            Items = new List<Item>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
         }
@@ -100,7 +101,4 @@ namespace Mag1.ViewModels
         }
 
     }
-    
-    
-
 }
